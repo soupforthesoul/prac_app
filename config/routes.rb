@@ -1,6 +1,6 @@
 PracApp::Application.routes.draw do
   resources :projects
-
+  resources :sub_projects
 
   get "welcome/index"
 
