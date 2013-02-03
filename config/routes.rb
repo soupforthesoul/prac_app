@@ -4,6 +4,8 @@ PracApp::Application.routes.draw do
 
   get "welcome/index"
 
+  get "sub_project/index"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

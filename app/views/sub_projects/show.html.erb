@@ -2,32 +2,32 @@
 
 <p>
   <b>Name:</b>
-  <%= @project.name %>
+  <%= @sub_project.name %>
 </p>
 
 <p>
   <b>Description:</b>
-  <%= @project.description %>
+  <%= @sub_project.description %>
 </p>
 
 <p>
   <b>Duration:</b>
-  <%= @project.duration %>
+  <%= @sub_project.duration %>
 </p>
 
 <p>
   <b>Startdate:</b>
-  <%= @project.startdate %>
+  <%= @sub_project.startdate %>
 </p>
 
 <p>
   <b>Enddate:</b>
-  <%= @project.enddate %>
+  <%= @sub_project.enddate %>
 </p>
 
 <p>
   <b>Priority:</b>
-  <%= @project.priority %>
+  <%= @sub_project.priority %>
 </p>
 
 <table>
@@ -46,5 +46,5 @@
 </table>
 
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Edit', edit_sub_project_path(@sub_project) %> |
+<%= link_to 'Back', sub_projects_path %>
