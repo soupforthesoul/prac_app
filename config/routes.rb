@@ -1,6 +1,24 @@
 PracApp::Application.routes.draw do
-  resources :projects
-  resources :sub_projects
+  
+resources :tasks
+
+resources :sub_projects
+
+
+  resources :projects do
+     resources :sub_projects
+
+   end
+
+  resources :projects do
+     resources :tasks
+
+   end
+
+   resources :sub_projects do
+     resources :tasks
+
+   end
 
   get "welcome/index"
 

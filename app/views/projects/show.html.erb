@@ -30,21 +30,114 @@
   <%= @project.priority %>
 </p>
 
+
+
+<h2>Sub-projects</h2>
+
+ 
+
 <table>
- <tr>
-      <td>
-          <% unless @project.sub_projects.empty? %>
-          <table>
-              <%= render @sub_projects %>
-          </table>  
-            
-          <%end %>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Duration</th>
+    <th>Startdate</th>
+    <th>Enddate</th>
+    <th>Priority</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
 
-      </td>
-
- </tr>
+<% @project.sub_projects.each do |sub_project| %>
+  <tr>
+    <td><%= sub_project.name %></td>
+    <td><%= sub_project.description %></td>
+    <td><%= sub_project.duration %></td>
+    <td><%= sub_project.startdate %></td>
+    <td><%= sub_project.enddate %></td>
+    <td><%= sub_project.priority %></td>
+    <td><%= link_to 'Show', sub_project %></td>
+    <td><%= link_to 'Edit', edit_sub_project_path(sub_project) %></td>
+    <td><%= link_to 'Destroy', sub_project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
 </table>
 
+
+
+<%= form_for([@project, @project.sub_projects.build]) do |f| %>
+  
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br />
+    <%= f.number_field :duration %>
+  </div>
+  <div class="field">
+    <%= f.label :startdate %><br />
+    <%= f.date_select :startdate %>
+  </div>
+  <div class="field">
+    <%= f.label :enddate %><br />
+    <%= f.date_select :enddate %>
+  </div>
+  <div class="field">
+    <%= f.label :priority %><br />
+    <%= f.number_field :priority %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %> 
+
+
+<h2>Tasks</h2>
+<% @project.tasks.each do |task| %>
+  <p>
+         <b>Name:</b>
+         <%= task.name %>
+  </p>
+
+  <p>
+         <b>Description:</b>
+         <%= task.description %>
+  </p>
+
+
+  <% end %>
+
+
+<%= form_for([@project, @project.tasks.build]) do |f| %>
+  
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br />
+    <%= f.number_field :duration %>
+  </div>
+    <div class="field">
+    <%= f.label :sub_project %><br />
+    <%= f.text_field :sub_project %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

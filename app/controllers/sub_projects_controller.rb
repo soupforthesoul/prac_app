@@ -1,6 +1,7 @@
 class SubProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
+
   def index
     @sub_projects = SubProject.all
 
@@ -40,17 +41,13 @@ class SubProjectsController < ApplicationController
   # POST /projects
   # POST /projects.json
   def create
-    @sub_project = SubProject.new(params[:sub_project])
+    @project = Project.find(params[:project_id])
+    @sub_project = @project.sub_projects.create(params[:sub_project])
 
-    respond_to do |format|
-      if @sub_project.save
-        format.html { redirect_to @sub_project, notice: 'SubProject was successfully created.' }
-        format.json { render json: @sub_project, status: :created, location: @sub_project }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @sub_project.errors, status: :unprocessable_entity }
-      end
-    end
+
+    
+
+    redirect_to project_path(@project)
   end
 
   # PUT /projects/1
@@ -74,9 +71,9 @@ class SubProjectsController < ApplicationController
   def destroy
     @sub_project = SubProject.find(params[:id])
     @sub_project.destroy
-
+    session[:return_to] ||= request.referer
     respond_to do |format|
-      format.html { redirect_to sub_projects_url }
+      format.html { redirect_to session[:return_to] }
       format.json { head :no_content }
     end
   end
