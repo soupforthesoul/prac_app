@@ -40,12 +40,11 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @project = Project.find(params[:project_id])
-    @task = @project.tasks.create(params[:task])
-
+    @sub_project = SubProject.find(params[:sub_project_id])
+    @task = @sub_project.tasks.create(params[:task])
 
     
-    redirect_to project_path(@project)
+    redirect_to sub_project_path(@sub_project)
   end
 
   # PUT /tasks/1

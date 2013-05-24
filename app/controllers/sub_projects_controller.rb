@@ -71,9 +71,9 @@ class SubProjectsController < ApplicationController
   def destroy
     @sub_project = SubProject.find(params[:id])
     @sub_project.destroy
-    session[:return_to] ||= request.referer
+    session[:return_to] = request.referer
     respond_to do |format|
-      format.html { redirect_to session[:return_to] }
+      format.html { redirect_to session[:return_to]}
       format.json { head :no_content }
     end
   end

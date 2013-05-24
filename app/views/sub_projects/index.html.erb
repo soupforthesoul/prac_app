@@ -1,4 +1,4 @@
-<h1>Listing projects</h1>
+<h1>Listing Sub-projects</h1>
 
 <table>
   <tr>
@@ -8,21 +8,25 @@
     <th>Startdate</th>
     <th>Enddate</th>
     <th>Priority</th>
+    <th>Project</th>
+    <th>Complete</th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
 
-<% @sub_projects.each do |project| %>
+<% @sub_projects.each do |sub_project| %>
   <tr>
-    <td><%= sub_project.name %></td>
+    <td><%= link_to sub_project.name, sub_project %></td>
     <td><%= sub_project.description %></td>
     <td><%= sub_project.duration %></td>
     <td><%= sub_project.startdate %></td>
     <td><%= sub_project.enddate %></td>
     <td><%= sub_project.priority %></td>
+    <td><%= link_to sub_project.project.name, sub_project.project %></td>
+    <td><%= sub_project.complete %></td>
     <td><%= link_to 'Show', sub_project %></td>
-    <td><%= link_to 'Edit', edit_sub_project_path(project) %></td>
+    <td><%= link_to 'Edit', edit_sub_project_path(sub_project) %></td>
     <td><%= link_to 'Destroy', sub_project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
@@ -30,4 +34,4 @@
 
 <br />
 
-<%= link_to 'New Project', new_sub_project_path %>
+<%= link_to 'New Sub-Project', new_sub_project_path %>

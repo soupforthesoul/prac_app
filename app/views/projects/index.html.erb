@@ -8,6 +8,7 @@
     <th>Startdate</th>
     <th>Enddate</th>
     <th>Priority</th>
+    <th>Complete</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,15 +16,16 @@
 
 <% @projects.each do |project| %>
   <tr>
-    <td><%= project.name %></td>
+    <td><%= link_to project.name, project %></td>
     <td><%= project.description %></td>
     <td><%= project.duration %></td>
     <td><%= project.startdate %></td>
     <td><%= project.enddate %></td>
     <td><%= project.priority %></td>
+    <td><%= project.complete %></td>
     <td><%= link_to 'Show', project %></td>
     <td><%= link_to 'Edit', edit_project_path(project) %></td>
-    <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= button_to "delete", project, :method=>:delete, :class=>:destroy %></td>
   </tr>
 <% end %>
 </table>

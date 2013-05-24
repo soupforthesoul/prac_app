@@ -29,22 +29,55 @@
   <b>Priority:</b>
   <%= @sub_project.priority %>
 </p>
-
+<p>
+  <b>Project:</b>
+  <%=link_to @sub_project.project.name, @sub_project.project %>
+</p>
+<h2>Tasks</h2>
 <table>
- <tr>
-      <td>
-          <% unless @project.sub_projects.empty? %>
-          <table>
-              <%= render @sub_projects %>
-          </table>  
-            
-          <%end %>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Duration</th>
+   
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
 
-      </td>
+<% @sub_project.tasks.each do |task| %>
+  <tr>
+    <td><%= link_to task.name, task %></td>
+    <td><%= task.description %></td>
+    <td><%= task.duration %></td>
 
- </tr>
+    <td><%= link_to 'Show', task %></td>
+    <td><%= link_to 'Edit', edit_task_path(task) %></td>
+    <td><%= button_to "delete", task, :method=>:delete, :class=>:destroy %>
+
+</td>
+  </tr>
+<% end %>
 </table>
+<%= form_for([@sub_project, @sub_project.tasks.build]) do |f| %>
+  
 
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br />
+    <%= f.number_field :duration %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
 
 <%= link_to 'Edit', edit_sub_project_path(@sub_project) %> |
-<%= link_to 'Back', sub_projects_path %>
+<%= button_to "Back",  request.env["HTTP_REFERER"], :method => :get %> 

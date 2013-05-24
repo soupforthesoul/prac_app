@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+
+  
+  <%= button_to "All Projects", projects_path, :method=>:get %>
+
+
 <p>
   <b>Name:</b>
   <%= @project.name %>
@@ -30,6 +35,11 @@
   <%= @project.priority %>
 </p>
 
+<p>
+  <b>Complete:</b>
+  <%= @project.complete %>
+</p>
+
 
 
 <h2>Sub-projects</h2>
@@ -51,7 +61,7 @@
 
 <% @project.sub_projects.each do |sub_project| %>
   <tr>
-    <td><%= sub_project.name %></td>
+    <td><%= link_to sub_project.name, sub_project %></td>
     <td><%= sub_project.description %></td>
     <td><%= sub_project.duration %></td>
     <td><%= sub_project.startdate %></td>
@@ -59,7 +69,7 @@
     <td><%= sub_project.priority %></td>
     <td><%= link_to 'Show', sub_project %></td>
     <td><%= link_to 'Edit', edit_sub_project_path(sub_project) %></td>
-    <td><%= link_to 'Destroy', sub_project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= button_to "delete", sub_project, :method=>:delete, :class=>:destroy %></td>
   </tr>
 <% end %>
 </table>
@@ -99,45 +109,6 @@
 <% end %> 
 
 
-<h2>Tasks</h2>
-<% @project.tasks.each do |task| %>
-  <p>
-         <b>Name:</b>
-         <%= task.name %>
-  </p>
-
-  <p>
-         <b>Description:</b>
-         <%= task.description %>
-  </p>
-
-
-  <% end %>
-
-
-<%= form_for([@project, @project.tasks.build]) do |f| %>
-  
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :duration %><br />
-    <%= f.number_field :duration %>
-  </div>
-    <div class="field">
-    <%= f.label :sub_project %><br />
-    <%= f.text_field :sub_project %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
 <%= link_to 'Back', projects_path %>

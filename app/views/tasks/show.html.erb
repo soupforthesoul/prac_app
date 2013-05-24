@@ -17,14 +17,14 @@
 
 <p>
   <b>Project:</b>
-  <%= @task.project %>
+  <%= link_to @task.sub_project.project.name, @task.sub_project.project %>
 </p>
 
 <p>
   <b>Sub project:</b>
-  <%= @task.sub_project %>
+  <%= link_to @task.sub_project.name, @task.sub_project%>
 </p>
 
 
 <%= link_to 'Edit', edit_task_path(@task) %> |
-<%= link_to 'Back', tasks_path %>
+<%= button_to "Back",  request.env["HTTP_REFERER"], :method => :get %> 

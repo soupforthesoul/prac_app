@@ -7,6 +7,7 @@
     <th>Duration</th>
     <th>Project</th>
     <th>Sub project</th>
+    <th>Complete</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,8 +18,9 @@
     <td><%= task.name %></td>
     <td><%= task.description %></td>
     <td><%= task.duration %></td>
-    <td><%= task.project %></td>
-    <td><%= task.sub_project %></td>
+    <td><%= link_to task.sub_project.project.name, task.sub_project.project %></td>
+    <td><%= link_to task.sub_project.name, task.sub_project %></td>
+    <td><%= task.complete %></td>
     <td><%= link_to 'Show', task %></td>
     <td><%= link_to 'Edit', edit_task_path(task) %></td>
     <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>

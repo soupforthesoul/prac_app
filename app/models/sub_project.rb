@@ -1,5 +1,5 @@
 class SubProject < ActiveRecord::Base
-  attr_accessible :description, :duration, :enddate, :name, :priority,  :startdate
+  attr_accessible :description, :duration, :enddate, :name, :priority,  :startdate, :complete
   belongs_to :project 
   has_many :tasks, :dependent => :destroy
   validates :name, :presence => true

@@ -80,6 +80,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.destroy
 
+   
     respond_to do |format|
       format.html { redirect_to projects_url }
       format.json { head :no_content }
