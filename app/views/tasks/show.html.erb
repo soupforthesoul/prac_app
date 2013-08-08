@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= button_to "Back to All Projects", projects_path, :method=>:get %>
 <p>
   <b>Name:</b>
   <%= @task.name %>
@@ -11,7 +11,7 @@
 </p>
 
 <p>
-  <b>Duration:</b>
+  <b>Duration (hours):</b>
   <%= @task.duration %>
 </p>
 

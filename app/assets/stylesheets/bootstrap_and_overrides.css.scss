@@ -2,6 +2,8 @@
 body { padding-top: 60px; }
 @import "bootstrap-responsive";
 
+
+
 .content {
   background-color: #eee;
   padding: 20px;
@@ -21,4 +23,13 @@ a { text-decoration:none;
 
 a:visited {
 	
+}
+
+
+#new_sub_project_button{
+  color:grey;
+height: 35px;
+width: 160px;
+font-family: impact;
+font-size: 20px;  
 }

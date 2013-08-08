@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%= button_to "Back to All Projects", projects_path, :method=>:get %>
 <p>
   <b>Name:</b>
   <%= @sub_project.name %>
@@ -11,7 +11,7 @@
 </p>
 
 <p>
-  <b>Duration:</b>
+  <b>Duration (hours):</b>
   <%= @sub_project.duration %>
 </p>
 
@@ -71,7 +71,7 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :duration %><br />
+    <%= f.label :duration_in_hours %><br />
     <%= f.number_field :duration %>
   </div>
   <div class="actions">

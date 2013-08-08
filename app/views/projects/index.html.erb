@@ -4,7 +4,7 @@
   <tr>
     <th>Name</th>
     <th>Description</th>
-    <th>Duration</th>
+    <th>Duration (hours)</th>
     <th>Startdate</th>
     <th>Enddate</th>
     <th>Priority</th>
@@ -23,8 +23,8 @@
     <td><%= project.enddate %></td>
     <td><%= project.priority %></td>
     <td><%= project.complete %></td>
-    <td><%= link_to 'Show', project %></td>
-    <td><%= link_to 'Edit', edit_project_path(project) %></td>
+    <td><%= button_to 'Show', project, :method=>:get %></td>
+    <td><%= button_to 'Edit', edit_project_path(project) %></td>
     <td><%= button_to "delete", project, :method=>:delete, :class=>:destroy %></td>
   </tr>
 <% end %>
@@ -32,4 +32,5 @@
 
 <br />
 
-<%= link_to 'New Project', new_project_path %>
+
+  <%= button_to 'New Project', new_project_path, :id => "new_project_button" %>

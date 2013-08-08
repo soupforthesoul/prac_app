@@ -5,5 +5,5 @@ class SubProject < ActiveRecord::Base
   validates :name, :presence => true
   validates :project_id, :presence => true
   default_scope :order => 'sub_projects.created_at DESC'
-
+  validates :duration, :numericality => { :greater_than_or_equal_to => 0 }
 end
